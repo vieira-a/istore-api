@@ -36,3 +36,6 @@ lerna-debug.log*
 
 # DOCS
 requeriments.md
+
+# ENVIROMENT
+.env
