@@ -19,8 +19,13 @@ export class ProductEntity {
   @Column({ name: 'category', length: 30, nullable: false })
   category: string;
 
-  @Column({ name: 'status', length: 8, nullable: false })
-  status: RegisterStatus.ACTIVE;
+  @Column({
+    name: 'status',
+    length: 8,
+    nullable: false,
+    default: RegisterStatus.ACTIVE,
+  })
+  status: string;
 
   @Column({ name: 'quantity', nullable: false })
   quantity: number;
