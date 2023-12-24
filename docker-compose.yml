@@ -9,7 +9,7 @@ services:
     volumes:
       - postgres:/data/postgres
     ports:
-      - "5532:5432"
+      - "5432:5432"
     networks:
       - postgres
     restart: unless-stopped
@@ -20,7 +20,7 @@ services:
       PGADMIN_DEFAULT_EMAIL: ${DB_ADMIN_EMAIL}
       PGADMIN_DEFAULT_PASSWORD: ${DB_PASSWORD}
     ports:
-      - "8085:80"
+      - "8081:80"
     depends_on:
       - postgres
     networks:
