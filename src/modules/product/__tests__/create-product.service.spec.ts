@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 
+import { productDataMock, productEntityMock } from '../__mocks__';
 import { ProductEntity } from '../entities';
 import { CreateProductService } from '../services';
-import { CreateProductDto } from '../dtos';
 
 describe('CreateProductService', () => {
   let createProductService: CreateProductService;
@@ -39,9 +39,6 @@ describe('CreateProductService', () => {
   });
 
   it('should create a new product with correct values', async () => {
-    const productDataMock = new CreateProductDto();
-    const productEntityMock = new ProductEntity();
-
     jest
       .spyOn(createProductService, 'create')
       .mockResolvedValue(productEntityMock);
