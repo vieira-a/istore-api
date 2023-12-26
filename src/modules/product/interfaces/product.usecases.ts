@@ -16,3 +16,7 @@ export interface ReadProductByIdUsecase {
 export interface UpdateProductUsecase {
   update: (productId: number, productData: UpdateProductDto) => void;
 }
+
+export interface DeleteProductUsecase {
+  delete: (productId: number) => void;
+}
