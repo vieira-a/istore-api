@@ -38,7 +38,9 @@ describe('DeleteProductController', () => {
   });
 
   it('should delete product by id', async () => {
-    jest.spyOn(service, 'delete').mockResolvedValue({ raw: [], affected: 1 });
+    jest
+      .spyOn(service, 'delete')
+      .mockResolvedValue({ raw: [], affected: 1, generatedMaps: [] });
 
     const result = await controller.delete(1);
     expect(result).toEqual(deletedSuccess());
