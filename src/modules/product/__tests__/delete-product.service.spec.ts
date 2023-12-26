@@ -53,11 +53,11 @@ describe('DeleteProductService', () => {
       .mockResolvedValue(productResolvedMock);
     jest
       .spyOn(repository, 'delete')
-      .mockResolvedValue({ raw: { effected: 1 } });
+      .mockResolvedValue({ raw: [], affected: 1 });
 
     const result = await service.delete(productId);
 
-    expect(result).toEqual({ raw: { effected: 1 } });
+    expect(result).toEqual({ raw: [], affected: 1 });
     expect(repository.delete).toHaveBeenCalledWith(productId);
   });
 });
