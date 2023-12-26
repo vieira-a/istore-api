@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 
+import { DataNotFoundException } from '../../../modules/shared/exceptions';
 import { productMock } from '../__mocks__';
 import { ReadProductByIdController } from '../controllers';
 import { ProductEntity } from '../entities';
@@ -28,6 +29,18 @@ describe('ReadProductsController', () => {
     controller = module.get<ReadProductByIdController>(
       ReadProductByIdController,
     );
+  });
+
+  it('should return 404 if not found product', async () => {
+    jest.spyOn(service, 'read').mockImplementationOnce((id) => {
+      if (id === productMock.id) {
+        return Promise.resolve(productMock);
+      } else {
+        return Promise.resolve(null);
+      }
+    });
+
+    await expect(controller.read(2)).rejects.toThrow(DataNotFoundException);
   });
 
   it('should return a product on success', async () => {
