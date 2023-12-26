@@ -25,6 +25,13 @@ export const productMock = {
   deletedAt: new Date(),
 };
 
+export const updateProductMock = {
+  name: 'Product 1',
+  category: 'Category 1',
+  status: 'active',
+  quantity: 1,
+};
+
 export const productEntityMock = new ProductEntity();
 
 export const productsResolvedMock = mapperDtoToEntityArrays(

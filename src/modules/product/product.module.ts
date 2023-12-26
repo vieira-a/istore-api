@@ -11,6 +11,7 @@ import {
   CreateProductService,
   ReadProductByIdService,
   ReadProductsService,
+  UpdateProductService,
 } from './services';
 
 @Module({
@@ -19,6 +20,7 @@ import {
     CreateProductService,
     ReadProductsService,
     ReadProductByIdService,
+    UpdateProductService,
   ],
   controllers: [
     CreateProductController,
