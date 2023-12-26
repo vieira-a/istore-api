@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, NotFoundException } from '@nestjs/common';
 
 import { ReadProductsService } from '../services';
 
@@ -8,6 +8,10 @@ export class ReadProductsController {
 
   @Get()
   async read() {
-    return await this.readProductsService.read();
+    const result = await this.readProductsService.read();
+    if (!result || result.length === 0) {
+      throw new NotFoundException();
+    }
+    return result;
   }
 }
