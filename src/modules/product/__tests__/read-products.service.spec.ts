@@ -28,6 +28,16 @@ describe('CreateProductService', () => {
     expect(readProductService).toBeDefined();
   });
 
+  it('should return an error if service throws', async () => {
+    const readSpy = jest
+      .spyOn(readProductService, 'read')
+      .mockImplementation(() => {
+        throw new Error();
+      });
+
+    expect(readSpy).toThrow();
+  });
+
   it('should returns all products on success', async () => {
     jest
       .spyOn(readProductService, 'read')
