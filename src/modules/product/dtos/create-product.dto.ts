@@ -1,4 +1,4 @@
-import { IsNotEmpty } from 'class-validator';
+import { IsNotEmpty, IsOptional } from 'class-validator';
 
 export class CreateProductDto {
   @IsNotEmpty({ message: 'Nome do produto é obrigatório' })
@@ -14,5 +14,6 @@ export class CreateProductDto {
 
   updatedAt: Date;
 
+  @IsOptional()
   deletedAt: Date;
 }
