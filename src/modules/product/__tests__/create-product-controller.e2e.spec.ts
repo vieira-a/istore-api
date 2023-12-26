@@ -4,13 +4,26 @@ import * as request from 'supertest';
 
 import { AppModule } from '../../../app.module';
 import { productDataMock } from '../__mocks__';
+import { CreateProductController } from '../controllers';
+import { CreateProductService } from '../services';
 
 describe('CreateProductController (e2e)', () => {
   let app: INestApplication;
 
   beforeAll(async () => {
+    const createProductServiceMock = {
+      create: jest.fn().mockResolvedValue(productDataMock),
+    };
+
     const module: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
+      controllers: [CreateProductController],
+      providers: [
+        {
+          provide: CreateProductService,
+          useValue: createProductServiceMock,
+        },
+      ],
     }).compile();
 
     app = module.createNestApplication();
