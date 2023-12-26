@@ -6,7 +6,7 @@ import { DeleteProductController } from '../controllers';
 import { ProductEntity } from '../entities';
 import { DeleteProductService, ReadProductByIdService } from '../services';
 
-describe('CreateProductController', () => {
+describe('DeleteProductController', () => {
   let service: DeleteProductService;
   let controller: DeleteProductController;
 
@@ -27,6 +27,14 @@ describe('CreateProductController', () => {
 
     service = module.get<DeleteProductService>(DeleteProductService);
     controller = module.get<DeleteProductController>(DeleteProductController);
+  });
+
+  it('should throws an error if application throws', async () => {
+    jest.spyOn(service, 'delete').mockRejectedValue(() => {
+      throw new Error();
+    });
+
+    await expect(controller.delete(1)).rejects.toThrow(new Error());
   });
 
   it('should delete product by id', async () => {
