@@ -17,12 +17,13 @@ export class UpdateProductService implements UpdateProductUsecase {
   ) {}
   async update(productId: number, productData: UpdateProductDto) {
     const productExists = await this.readProductByIdService.read(productId);
+
     if (!productExists) {
       throw new DataNotFoundException();
     }
 
     return await this.updateProductServiceRepository.save({
-      productId,
+      id: productId,
       ...productData,
     });
   }
