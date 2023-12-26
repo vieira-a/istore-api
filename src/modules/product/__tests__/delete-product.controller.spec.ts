@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 
+import { deletedSuccess } from '../../../modules/shared/helpers';
 import { DeleteProductController } from '../controllers';
 import { ProductEntity } from '../entities';
 import { DeleteProductService, ReadProductByIdService } from '../services';
@@ -32,6 +33,6 @@ describe('CreateProductController', () => {
     jest.spyOn(service, 'delete').mockResolvedValue({ raw: [], affected: 1 });
 
     const result = await controller.delete(1);
-    expect(result).toEqual({ raw: [], affected: 1 });
+    expect(result).toEqual(deletedSuccess());
   });
 });

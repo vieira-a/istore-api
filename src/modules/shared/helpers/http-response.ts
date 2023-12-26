@@ -17,3 +17,12 @@ export const updatedSuccess = () => {
     },
   };
 };
+
+export const deletedSuccess = () => {
+  return {
+    status: HttpStatus.OK,
+    body: {
+      message: 'Excluído com sucesso',
+    },
+  };
+};
