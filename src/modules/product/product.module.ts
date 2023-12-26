@@ -5,6 +5,7 @@ import {
   CreateProductController,
   ReadProductByIdController,
   ReadProductsController,
+  UpdateProductController,
 } from './controllers';
 import { ProductEntity } from './entities/product.entity';
 import {
@@ -26,6 +27,7 @@ import {
     CreateProductController,
     ReadProductsController,
     ReadProductByIdController,
+    UpdateProductController,
   ],
 })
 export class ProductModule {}

@@ -8,3 +8,12 @@ export const registerSuccess = () => {
     },
   };
 };
+
+export const updatedSuccess = () => {
+  return {
+    status: HttpStatus.OK,
+    body: {
+      message: 'Atualizado com sucesso',
+    },
+  };
+};
