@@ -28,6 +28,14 @@ describe('ReadProductsController', () => {
     controller = module.get<ReadProductsController>(ReadProductsController);
   });
 
+  it('should throws an error if application throws', async () => {
+    jest.spyOn(service, 'read').mockRejectedValue(() => {
+      throw new Error();
+    });
+
+    await expect(controller.read()).rejects.toThrow(new Error());
+  });
+
   it('should return all products on success', async () => {
     jest.spyOn(service, 'read').mockResolvedValue(productsResolvedMock);
     const result = await controller.read();
