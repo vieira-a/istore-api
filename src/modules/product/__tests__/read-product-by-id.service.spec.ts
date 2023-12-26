@@ -30,6 +30,16 @@ describe('CreateProductService', () => {
     expect(readProductByIdService).toBeDefined();
   });
 
+  it('should return an error if service throws', async () => {
+    const readSpy = jest
+      .spyOn(readProductByIdService, 'read')
+      .mockImplementation(() => {
+        throw new Error();
+      });
+
+    expect(readSpy).toThrow();
+  });
+
   it('should returns product by id on success', async () => {
     jest.spyOn(readProductByIdService, 'read').mockImplementationOnce((id) => {
       if (id === productResolvedMock.id) {
