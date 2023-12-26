@@ -31,6 +31,14 @@ describe('ReadProductsController', () => {
     );
   });
 
+  it('should throws an error if application throws', async () => {
+    jest.spyOn(service, 'read').mockRejectedValue(() => {
+      throw new Error();
+    });
+
+    await expect(controller.read(1)).rejects.toThrow(new Error());
+  });
+
   it('should return 404 if not found product', async () => {
     jest.spyOn(service, 'read').mockImplementationOnce((id) => {
       if (id === productMock.id) {
