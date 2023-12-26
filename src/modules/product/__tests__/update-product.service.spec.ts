@@ -25,6 +25,16 @@ describe('UpdateProductService', () => {
       moduleRef.get<UpdateProductService>(UpdateProductService);
   });
 
+  it('should return an error if service throws', async () => {
+    const updateSpy = jest
+      .spyOn(updateProductService, 'update')
+      .mockImplementation(() => {
+        throw new Error();
+      });
+
+    expect(updateSpy).toThrow();
+  });
+
   it('should update product on success', async () => {
     const result = await updateProductService.update(1, updateProductMock);
     expect(result).toEqual(updateProductMock);
