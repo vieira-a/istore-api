@@ -8,3 +8,7 @@ export interface CreateProductUsecase {
 export interface ReadProductsUsecase {
   read: () => Promise<ProductEntity[]>;
 }
+
+export interface ReadProductByIdUsecase {
+  read: (productId: number) => Promise<ProductEntity>;
+}
