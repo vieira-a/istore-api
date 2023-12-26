@@ -38,8 +38,12 @@ describe('DeleteProductService', () => {
     );
   });
 
-  it('should be defined', () => {
-    expect(service).toBeDefined();
+  it('should return an error if service throws', async () => {
+    const deleteSpy = jest.spyOn(service, 'delete').mockImplementation(() => {
+      throw new Error();
+    });
+
+    expect(deleteSpy).toThrow();
   });
 
   it('should delete a product by id if it exists', async () => {
