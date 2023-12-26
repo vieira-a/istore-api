@@ -30,6 +30,16 @@ describe('CreateProductController', () => {
     controller = module.get<UpdateProductController>(UpdateProductController);
   });
 
+  it('should throws an error if application throws', async () => {
+    jest.spyOn(service, 'update').mockRejectedValue(() => {
+      throw new Error();
+    });
+
+    await expect(controller.update(1, updateProductMock)).rejects.toThrow(
+      new Error(),
+    );
+  });
+
   it('should update product on success', async () => {
     jest.spyOn(service, 'update').mockResolvedValue(productEntityMock);
 
