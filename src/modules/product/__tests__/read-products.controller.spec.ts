@@ -1,11 +1,11 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 
+import { DataNotFoundException } from '../../../modules/shared/exceptions';
 import { productsResolvedMock } from '../__mocks__';
 import { ReadProductsController } from '../controllers';
 import { ProductEntity } from '../entities';
 import { ReadProductsService } from '../services';
-import { NotFoundException } from '@nestjs/common';
 
 describe('ReadProductsController', () => {
   let service: ReadProductsService;
@@ -40,7 +40,7 @@ describe('ReadProductsController', () => {
   it('should return 404 if not found products', async () => {
     jest.spyOn(service, 'read').mockResolvedValueOnce([]);
 
-    await expect(controller.read()).rejects.toThrow(NotFoundException);
+    await expect(controller.read()).rejects.toThrow(DataNotFoundException);
   });
 
   it('should return all products on success', async () => {
