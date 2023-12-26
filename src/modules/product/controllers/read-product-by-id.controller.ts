@@ -1,5 +1,6 @@
 import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { ReadProductByIdService } from '../services';
+import { DataNotFoundException } from '../../../modules/shared/exceptions';
 
 @Controller('product')
 export class ReadProductByIdController {
@@ -9,6 +10,12 @@ export class ReadProductByIdController {
 
   @Get(':id')
   async read(@Param('id', ParseIntPipe) id: number) {
-    return await this.readProductByIdService.read(id);
+    const result = await this.readProductByIdService.read(id);
+
+    if (!result) {
+      throw new DataNotFoundException();
+    }
+
+    return result;
   }
 }
