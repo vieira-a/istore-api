@@ -36,6 +36,16 @@ describe('CreateProductController (e2e)', () => {
       .expect(400);
   });
 
+  it('/ (POST) should returns 400 if product category is not provided', async () => {
+    return await request(app.getHttpServer())
+      .post('/product/register')
+      .send({
+        ...productDataMock,
+        category: '',
+      })
+      .expect(400);
+  });
+
   afterAll(async () => {
     await app.close();
   });
