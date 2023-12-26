@@ -31,9 +31,9 @@ describe('CreateProductService', () => {
   it('should returns all products on success', async () => {
     jest
       .spyOn(readProductService, 'read')
-      .mockResolvedValue([productsResolvedMock]);
+      .mockResolvedValue(productsResolvedMock);
 
     const result = await readProductService.read();
-    expect(result).toEqual([productsResolvedMock]);
+    expect(result).toEqual(productsResolvedMock);
   });
 });
