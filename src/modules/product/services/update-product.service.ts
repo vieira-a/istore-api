@@ -19,7 +19,7 @@ export class UpdateProductService implements UpdateProductUsecase {
     const productExists = await this.readProductByIdService.read(productId);
 
     if (!productExists) {
-      throw new DataNotFoundException();
+      throw new DataNotFoundException('Produto');
     }
 
     return await this.updateProductServiceRepository.save({

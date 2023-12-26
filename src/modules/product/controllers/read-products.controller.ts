@@ -11,7 +11,7 @@ export class ReadProductsController {
   async read() {
     const result = await this.readProductsService.read();
     if (!result || result.length === 0) {
-      throw new DataNotFoundException();
+      throw new DataNotFoundException('Produtos');
     }
     return result;
   }

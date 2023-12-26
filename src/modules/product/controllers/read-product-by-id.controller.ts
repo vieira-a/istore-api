@@ -13,7 +13,7 @@ export class ReadProductByIdController {
     const result = await this.readProductByIdService.read(id);
 
     if (!result) {
-      throw new DataNotFoundException();
+      throw new DataNotFoundException('Produto');
     }
 
     return result;

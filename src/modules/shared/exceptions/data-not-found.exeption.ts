@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus } from '@nestjs/common';
 
 export class DataNotFoundException extends HttpException {
-  constructor() {
-    super(`Dados não encontrados`, HttpStatus.NOT_FOUND);
+  constructor(data: string) {
+    super(`Dados não encontrados: ${data}`, HttpStatus.NOT_FOUND);
   }
 }
