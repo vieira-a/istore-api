@@ -36,6 +36,9 @@ describe('DeleteProductService', () => {
     repository = module.get<Repository<ProductEntity>>(
       getRepositoryToken(ProductEntity),
     );
+
+    repository.softDelete = jest.fn().mockResolvedValue({ affected: 1 });
+    repository.save = jest.fn().mockResolvedValue(productResolvedMock);
   });
 
   it('should return an error if service throws', async () => {
@@ -52,12 +55,16 @@ describe('DeleteProductService', () => {
       .spyOn(readProductByIdService, 'read')
       .mockResolvedValue(productResolvedMock);
     jest
-      .spyOn(repository, 'delete')
-      .mockResolvedValue({ raw: [], affected: 1 });
+      .spyOn(repository, 'softDelete')
+      .mockResolvedValue({ raw: [], affected: 1, generatedMaps: [] });
 
     const result = await service.delete(productId);
 
-    expect(result).toEqual({ raw: [], affected: 1 });
-    expect(repository.delete).toHaveBeenCalledWith(productId);
+    expect(result).toEqual({ raw: [], affected: 1, generatedMaps: [] });
+    expect(repository.softDelete).toHaveBeenCalledWith(productId);
+    expect(repository.save).toHaveBeenCalledWith({
+      id: productId,
+      status: 'inactive',
+    });
   });
 });

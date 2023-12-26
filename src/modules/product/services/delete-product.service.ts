@@ -20,6 +20,14 @@ export class DeleteProductService implements DeleteProductUsecase {
     if (!productExists) {
       throw new DataNotFoundException('Produto');
     }
-    return await this.deleteProductServiceRepository.delete(productId);
+    const result =
+      await this.deleteProductServiceRepository.softDelete(productId);
+    if (result.affected) {
+      await this.deleteProductServiceRepository.save({
+        id: productId,
+        status: 'inactive',
+      });
+    }
+    return result;
   }
 }
