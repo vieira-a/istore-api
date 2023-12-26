@@ -7,12 +7,13 @@ import {
   ReadProductsController,
   UpdateProductController,
 } from './controllers';
-import { ProductEntity } from './entities/product.entity';
+import { ProductEntity } from './entities';
 import {
   CreateProductService,
   ReadProductByIdService,
   ReadProductsService,
   UpdateProductService,
+  DeleteProductService,
 } from './services';
 
 @Module({
@@ -22,6 +23,7 @@ import {
     ReadProductsService,
     ReadProductByIdService,
     UpdateProductService,
+    DeleteProductService,
   ],
   controllers: [
     CreateProductController,
