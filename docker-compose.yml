@@ -12,6 +12,8 @@ services:
       - "5432:5432"
     networks:
       - postgres
+    command: >
+      bash -c "echo 'CREATE DATABASE $DB_NAME;' > /docker-entrypoint-initdb.d/init.sql && docker-entrypoint.sh postgres"
     restart: unless-stopped
 
   pgadmin:
