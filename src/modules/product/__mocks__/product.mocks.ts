@@ -1,4 +1,9 @@
 import {
+  PageDto,
+  PageMetaDto,
+  PageOptionsDto,
+} from '../../../modules/shared/dtos';
+import {
   mapperDtoToEntityArrays,
   mapperDtoToEntity,
 } from '../../../modules/shared/helpers';
@@ -43,3 +48,17 @@ export const productResolvedMock = mapperDtoToEntity(
   productMock,
   ProductEntity,
 );
+
+export const pageOptionDtoMock = new PageOptionsDto();
+
+export const pageMetaParamsMock = {
+  pageOptionsDto: pageOptionDtoMock,
+  itemCount: 10,
+};
+
+export const pageMetaDtoMock = new PageMetaDto(pageMetaParamsMock);
+
+export const pageDtoMock: PageDto<any> = {
+  data: [productDataMock],
+  meta: pageMetaDtoMock,
+};

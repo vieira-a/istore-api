@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 
+import { pageDtoMock, pageOptionDtoMock } from '../__mocks__';
 import { ProductEntity } from '../entities';
 import { ReadProductsService } from '../services';
-import { productsResolvedMock } from '../__mocks__';
 
 describe('CreateProductService', () => {
   let readProductService: ReadProductsService;
@@ -39,11 +39,9 @@ describe('CreateProductService', () => {
   });
 
   it('should returns all products on success', async () => {
-    jest
-      .spyOn(readProductService, 'read')
-      .mockResolvedValue(productsResolvedMock);
+    jest.spyOn(readProductService, 'read').mockResolvedValue(pageDtoMock);
 
-    const result = await readProductService.read();
-    expect(result).toEqual(productsResolvedMock);
+    const result = await readProductService.read(pageOptionDtoMock);
+    expect(result).toEqual(pageDtoMock);
   });
 });
