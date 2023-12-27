@@ -7,7 +7,7 @@ import {
   mapperDtoToEntityArrays,
   mapperDtoToEntity,
 } from '../../../modules/shared/helpers';
-import { ProductDto } from '../dtos';
+import { ProductDto, ProductFilterDto } from '../dtos';
 import { ProductEntity } from '../entities';
 
 export const productDataMock: ProductDto = {
@@ -62,3 +62,5 @@ export const pageDtoMock: PageDto<any> = {
   data: [productDataMock],
   meta: pageMetaDtoMock,
 };
+
+export const productFiltersDtoMock = new ProductFilterDto();

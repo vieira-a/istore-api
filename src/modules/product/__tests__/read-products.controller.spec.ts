@@ -2,7 +2,11 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 
 import { DataNotFoundException } from '../../../modules/shared/exceptions';
-import { pageDtoMock, pageOptionDtoMock } from '../__mocks__';
+import {
+  pageDtoMock,
+  pageOptionDtoMock,
+  productFiltersDtoMock,
+} from '../__mocks__';
 import { ReadProductsController } from '../controllers';
 import { ProductEntity } from '../entities';
 import { ReadProductsService } from '../services';
@@ -34,22 +38,25 @@ describe('ReadProductsController', () => {
       throw new Error();
     });
 
-    await expect(controller.read(pageOptionDtoMock)).rejects.toThrow(
-      new Error(),
-    );
+    await expect(
+      controller.read(pageOptionDtoMock, productFiltersDtoMock),
+    ).rejects.toThrow(new Error());
   });
 
   it('should return 404 if not found products', async () => {
     jest.spyOn(service, 'read').mockResolvedValueOnce(undefined);
 
-    await expect(controller.read(pageOptionDtoMock)).rejects.toThrow(
-      DataNotFoundException,
-    );
+    await expect(
+      controller.read(pageOptionDtoMock, productFiltersDtoMock),
+    ).rejects.toThrow(DataNotFoundException);
   });
 
   it('should return all products on success', async () => {
     jest.spyOn(service, 'read').mockResolvedValue(pageDtoMock);
-    const result = await controller.read(pageOptionDtoMock);
+    const result = await controller.read(
+      pageOptionDtoMock,
+      productFiltersDtoMock,
+    );
     expect(result).toBe(pageDtoMock);
   });
 });

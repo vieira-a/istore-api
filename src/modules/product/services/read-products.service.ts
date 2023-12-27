@@ -8,7 +8,7 @@ import {
   PageOptionsDto,
 } from '../../../modules/shared/dtos';
 import { mapperDtoToEntityArrays } from '../../../modules/shared/helpers';
-import { ProductDto } from '../dtos';
+import { ProductDto, ProductFilterDto } from '../dtos';
 import { ProductEntity } from '../entities';
 import { ReadProductsUsecase } from '../interfaces';
 
@@ -18,9 +18,22 @@ export class ReadProductsService implements ReadProductsUsecase {
     @InjectRepository(ProductEntity)
     private readonly readProductsServiceRepository: Repository<ProductEntity>,
   ) {}
-  async read(pageOptionsDto: PageOptionsDto): Promise<PageDto<ProductDto>> {
+  async read(
+    pageOptionsDto: PageOptionsDto,
+    filters: ProductFilterDto,
+  ): Promise<PageDto<ProductDto>> {
     const queryBuilder =
       this.readProductsServiceRepository.createQueryBuilder('products');
+
+    if (filters) {
+      Object.entries(filters).forEach(([key, value]) => {
+        if (value) {
+          queryBuilder.andWhere(`UPPER(products.${key}) LIKE UPPER(:${key})`, {
+            [key]: `%${value}%`,
+          });
+        }
+      });
+    }
 
     queryBuilder.skip(pageOptionsDto.skip).take(pageOptionsDto.take);
 

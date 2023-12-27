@@ -1,5 +1,5 @@
 import { PageDto, PageOptionsDto } from '../../../modules/shared/dtos';
-import { ProductDto, UpdateProductDto } from '../dtos';
+import { ProductDto, ProductFilterDto, UpdateProductDto } from '../dtos';
 import { ProductEntity } from '../entities';
 
 export interface CreateProductUsecase {
@@ -7,7 +7,10 @@ export interface CreateProductUsecase {
 }
 
 export interface ReadProductsUsecase {
-  read: (pageOptionsDto: PageOptionsDto) => Promise<PageDto<ProductDto>>;
+  read: (
+    pageOptionsDto: PageOptionsDto,
+    filters: ProductFilterDto,
+  ) => Promise<PageDto<ProductDto>>;
 }
 
 export interface ReadProductByIdUsecase {
