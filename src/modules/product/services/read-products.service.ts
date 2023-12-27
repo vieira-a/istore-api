@@ -10,9 +10,10 @@ import {
 import { mapperDtoToEntityArrays } from '../../../modules/shared/helpers';
 import { ProductDto } from '../dtos';
 import { ProductEntity } from '../entities';
+import { ReadProductsUsecase } from '../interfaces';
 
 @Injectable()
-export class ReadProductsService {
+export class ReadProductsService implements ReadProductsUsecase {
   constructor(
     @InjectRepository(ProductEntity)
     private readonly readProductsServiceRepository: Repository<ProductEntity>,
