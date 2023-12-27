@@ -1,14 +1,14 @@
 import { Controller, Get, Query } from '@nestjs/common';
+import {
+  ApiInternalServerErrorResponse,
+  ApiNotFoundResponse,
+  ApiOkResponse,
+} from '@nestjs/swagger';
 
 import { PageOptionsDto } from '../../../modules/shared/dtos';
 import { DataNotFoundException } from '../../../modules/shared/exceptions';
+import { ProductDto, ProductFilterDto } from '../dtos';
 import { ReadProductsService } from '../services';
-import {
-  ApiOkResponse,
-  ApiNotFoundResponse,
-  ApiInternalServerErrorResponse,
-} from '@nestjs/swagger';
-import { ProductDto } from '../dtos';
 
 @Controller('products')
 export class ReadProductsController {
@@ -24,8 +24,11 @@ export class ReadProductsController {
     description: 'Internal server error',
   })
   @Get()
-  async read(@Query() pageOptionsDto: PageOptionsDto) {
-    const result = await this.readProductsService.read(pageOptionsDto);
+  async read(
+    @Query() pageOptionsDto: PageOptionsDto,
+    @Query() filters: ProductFilterDto,
+  ) {
+    const result = await this.readProductsService.read(pageOptionsDto, filters);
     if (!result) {
       throw new DataNotFoundException('Produtos');
     }
