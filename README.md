@@ -9,9 +9,9 @@
   <a href="#Recursos">Recursos</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#Tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#Funcionalidades">Funcionalidades</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#Como utilizar">Como utilizar</a>
-  <a href="#Desenvolvimento">Desenvolvimento</a>
-  <a href="#Autor">Autor</a>
+  <a href="#Como utilizar">Como utilizar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#Desenvolvimento">Desenvolvimento</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#Autor">Autor</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 </p>
 
 <br>
@@ -83,6 +83,81 @@ O objetivo desse projeto é prover uma API para gerenciamento de produtos.
 > Arquitetura do projeto
 
 - Utiliza os princípios arquiteturais oferecidos pelo Nest.js, fazendo uso apropriado de `Decorators`, `Dependency injection`, `Repositories`, juntamente com princípios de SOLID.
+
+> Estrutura de arquivos do projeto
+
+```
+src/
+├── app.module.ts
+├── main.ts
+└── modules
+    ├── product
+    │   ├── controllers
+    │   │   ├── create-product.controller.ts
+    │   │   ├── delete-product.controller.ts
+    │   │   ├── index.ts
+    │   │   ├── read-product-by-id.controller.ts
+    │   │   ├── read-products.controller.ts
+    │   │   └── update-product.controller.ts
+    │   ├── dtos
+    │   │   ├── create-product.dto.ts
+    │   │   ├── index.ts
+    │   │   ├── product-filter.dto.ts
+    │   │   └── update-product.dto.ts
+    │   ├── entities
+    │   │   ├── index.ts
+    │   │   └── product.entity.ts
+    │   ├── interfaces
+    │   │   ├── index.ts
+    │   │   └── product.usecases.ts
+    │   ├── __mocks__
+    │   │   ├── index.ts
+    │   │   └── product.mocks.ts
+    │   ├── product.module.ts
+    │   ├── services
+    │   │   ├── create-product.service.ts
+    │   │   ├── delete-product.service.ts
+    │   │   ├── index.ts
+    │   │   ├── read-product-by-id.service.ts
+    │   │   ├── read-products.service.ts
+    │   │   └── update-product.service.ts
+    │   └── __tests__
+    │       ├── create-product-controller.e2e.spec.ts
+    │       ├── create-product.controller.spec.ts
+    │       ├── create-product.service.spec.ts
+    │       ├── delete-product.controller.spec.ts
+    │       ├── delete-product.service.spec.ts
+    │       ├── read-product-by-id.controller.spec.ts
+    │       ├── read-product-by-id.service.spec.ts
+    │       ├── read-products.controller.spec.ts
+    │       ├── read-products.service.spec.ts
+    │       ├── update-product-controller.spec.ts
+    │       └── update-product.service.spec.ts
+    └── shared
+        ├── dtos
+        │   ├── index.ts
+        │   ├── page.dto.ts
+        │   ├── page-meta.dto.ts
+        │   └── page-options.dto.ts
+        ├── enums
+        │   ├── index.ts
+        │   ├── page-order.enum.ts
+        │   └── register-status.enum.ts
+        ├── exceptions
+        │   ├── data-not-found.exeption.ts
+        │   ├── http-exception.filter.ts
+        │   └── index.ts
+        ├── helpers
+        │   ├── http-response.ts
+        │   ├── index.ts
+        │   ├── mapper-dto-to-entity-arrays.ts
+        │   └── mapper-dto-to-entity.ts
+        └── interfaces
+            ├── index.ts
+            └── page-meta-params.ts
+```
+
+
 
 # Como utilizar
 
