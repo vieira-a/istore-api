@@ -1,3 +1,4 @@
+import { Exclude } from 'class-transformer';
 import { IsNotEmpty, IsOptional } from 'class-validator';
 
 export class ProductDto {
@@ -10,10 +11,13 @@ export class ProductDto {
   @IsNotEmpty({ message: 'Quantidade do produto é obrigatório' })
   quantity: number;
 
+  @Exclude()
   createdAt: Date;
 
+  @Exclude()
   updatedAt: Date;
 
+  @Exclude()
   @IsOptional()
   deletedAt: Date;
 }

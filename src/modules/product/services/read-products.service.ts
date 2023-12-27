@@ -7,12 +7,10 @@ import {
   PageMetaDto,
   PageOptionsDto,
 } from '../../../modules/shared/dtos';
+import { mapperDtoToEntityArrays } from '../../../modules/shared/helpers';
 import { ProductDto } from '../dtos';
 import { ProductEntity } from '../entities';
-import { mapDtoProduct } from '../helpers/map-to-product';
 
-//import { ReadProductsUsecase } from '../interfaces';
-//import { mapperDtoToEntityArrays } from '../../../modules/shared/helpers';
 @Injectable()
 export class ReadProductsService {
   constructor(
@@ -33,6 +31,9 @@ export class ReadProductsService {
       pageOptionsDto,
     });
 
-    return new PageDto(mapDtoProduct(entities), pageMetaDto);
+    return new PageDto(
+      mapperDtoToEntityArrays(entities, ProductDto),
+      pageMetaDto,
+    );
   }
 }
