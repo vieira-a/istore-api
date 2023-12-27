@@ -1,10 +1,11 @@
 import { HttpStatus } from '@nestjs/common';
 
-export const registerSuccess = () => {
+export const registerSuccess = (data?: any) => {
   return {
     status: HttpStatus.CREATED,
     body: {
       message: 'Cadastrado com sucesso',
+      data,
     },
   };
 };
