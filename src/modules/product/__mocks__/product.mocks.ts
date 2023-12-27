@@ -2,10 +2,10 @@ import {
   mapperDtoToEntityArrays,
   mapperDtoToEntity,
 } from '../../../modules/shared/helpers';
-import { CreateProductDto } from '../dtos';
+import { ProductDto } from '../dtos';
 import { ProductEntity } from '../entities';
 
-export const productDataMock: CreateProductDto = {
+export const productDataMock: ProductDto = {
   name: 'Product 1',
   category: 'Category 1',
   quantity: 1,

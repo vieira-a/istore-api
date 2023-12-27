@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { CreateProductDto } from '../dtos';
+import { ProductDto } from '../dtos';
 import { ProductEntity } from '../entities';
 import { CreateProductUsecase } from '../interfaces';
 
@@ -12,7 +12,7 @@ export class CreateProductService implements CreateProductUsecase {
     @InjectRepository(ProductEntity)
     private readonly createProductService: Repository<ProductEntity>,
   ) {}
-  async create(productData: CreateProductDto): Promise<ProductEntity> {
+  async create(productData: ProductDto): Promise<ProductEntity> {
     return await this.createProductService.save(productData);
   }
 }

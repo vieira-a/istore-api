@@ -1,8 +1,8 @@
-import { CreateProductDto, UpdateProductDto } from '../dtos';
+import { ProductDto, UpdateProductDto } from '../dtos';
 import { ProductEntity } from '../entities';
 
 export interface CreateProductUsecase {
-  create: (productData: CreateProductDto) => Promise<ProductEntity>;
+  create: (productData: ProductDto) => Promise<ProductEntity>;
 }
 
 export interface ReadProductsUsecase {

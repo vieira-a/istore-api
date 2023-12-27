@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsOptional } from 'class-validator';
 
-export class CreateProductDto {
+export class ProductDto {
   @IsNotEmpty({ message: 'Nome do produto é obrigatório' })
   name: string;
 
