@@ -2,6 +2,7 @@ import { HttpStatus } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 
+import { ConflitContentException } from '../../../modules/shared/exceptions';
 import { cityEntityMock } from '../__mocks__';
 import { FetchCityController } from '../controllers';
 import { CityEntity } from '../entities';
@@ -9,7 +10,6 @@ import { FetchCityService, SaveCityService } from '../services';
 
 describe('FetchCityController', () => {
   let controller: FetchCityController;
-  let fetchCityService: FetchCityService;
   let service: SaveCityService;
 
   beforeEach(async () => {
@@ -27,13 +27,16 @@ describe('FetchCityController', () => {
       ],
     }).compile();
 
-    fetchCityService = moduleRef.get<FetchCityService>(FetchCityService);
     service = moduleRef.get<SaveCityService>(SaveCityService);
     controller = moduleRef.get<FetchCityController>(FetchCityController);
   });
 
+  it('should be return 409 if has no data to save', async () => {
+    jest.spyOn(service, 'save').mockReturnValue(null);
+    await expect(controller.fetch()).rejects.toThrow(ConflitContentException);
+  });
+
   it('should be return 201 on success', async () => {
-    jest.spyOn(fetchCityService, 'fetch').mockResolvedValue(null);
     jest.spyOn(service, 'save').mockResolvedValue(cityEntityMock);
     const result = await controller.fetch();
     expect(result).toEqual({
