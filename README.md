@@ -272,6 +272,17 @@ Este comando criará um arquivo com as configurações das migrações que serã
 - API: http://localhost:3000/api/v1
 - Documentação: http://localhost:3000/api/v1/doc
 
+**11. Configurando o pgAdmin**
+
+As definições para acesso e configuração do `pgAdmin` estão no arquivo `docker-compose.yml` e no arquivo `.env` que você configurar:
+
+- Acesse `http://localhost:8081`;
+- Entre com as credenciais definidas no arquivo `.env`: `DB_ADMIN_EMAIL` e `DB_PASSWORD`;
+- Registre um novo servidor local com os com as credenciais conforme o arquivo `.env`: `DB_USERNAME` e `DB_PASSWORD`;
+- Na aba `Connection`, informe o endereço `postgres` - conforme o nome da rede criada no `docker-compose.yml`
+
+Pronto! Com isso você poderá visualizar os dados via `pgAdmin`!
+
 # Desenvolvimento
 
 Para visualizar todas as tarefas que foram executadas durante o desenvolvimento deste projeto, veja o arquivo `TODO.md`
