@@ -16,6 +16,10 @@
 
 <br>
 
+<p align="center">
+  <img alt="Swagger screenshot image" src=".github/bg-cover.png" width="100%">
+</p>
+
 # Projeto
 
 O objetivo desse projeto é prover uma API para gerenciamento de produtos.
