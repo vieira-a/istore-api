@@ -46,6 +46,16 @@ O objetivo desse projeto é prover uma API para gerenciamento de produtos.
 - Possui endpoint para atualizar produto;
 - Realiza atualização das informações do produto de acordo com dados pré estabelecidos;
 
+> Extração cidades
+
+- Realiza busca na API do [IBGE](https://servicodados.ibge.gov.br/api/v1/localidades/estados/33/municipios) por todas as cidades do estado do Rio de Janeiro.
+- Gera massa de dados para persistência de acordo com parâmetro pré estabelecido
+
+> Salva os dados de cidades
+
+- Salva apenas cidades ainda não cadastradas
+- Caso a cidade já esteja cadastrada, o sistema exibe informação ao usuário
+
 > Testes
 
 - Possui testes unitários e de integração para serviços e controladores utilizando a biblioteca Jest.
@@ -91,6 +101,39 @@ src/
 ├── app.module.ts
 ├── main.ts
 └── modules
+    ├── product
+    │   ├── controllerssrc/
+├── app.module.ts
+├── main.ts
+└── modules
+    ├── city
+    │   ├── city.module.ts
+    │   ├── controllers
+    │   │   ├── fetch-city.controller.ts
+    │   │   └── index.ts
+    │   ├── dtos
+    │   │   ├── city.dto.ts
+    │   │   └── index.ts
+    │   ├── entities
+    │   │   ├── city.entity.ts
+    │   │   └── index.ts
+    │   ├── helpers
+    │   │   ├── index.ts
+    │   │   └── mapper-city.ts
+    │   ├── interfaces
+    │   │   ├── city.usecases.ts
+    │   │   └── index.ts
+    │   ├── __mocks__
+    │   │   ├── city.mock.ts
+    │   │   └── index.ts
+    │   ├── services
+    │   │   ├── fetch-city.service.ts
+    │   │   ├── index.ts
+    │   │   └── save-city.service.ts
+    │   └── __tests__
+    │       ├── fetch-city.controller.spec.ts
+    │       ├── fetch-city.service.spec.ts
+    │       └── save-city.service.spec.ts
     ├── product
     │   ├── controllers
     │   │   ├── create-product.controller.ts
@@ -144,10 +187,12 @@ src/
         │   ├── page-order.enum.ts
         │   └── register-status.enum.ts
         ├── exceptions
+        │   ├── conflit-content.exception.ts
         │   ├── data-not-found.exeption.ts
         │   ├── http-exception.filter.ts
         │   └── index.ts
         ├── helpers
+        │   ├── fetch-api.helper.ts
         │   ├── http-response.ts
         │   ├── index.ts
         │   ├── mapper-dto-to-entity-arrays.ts
