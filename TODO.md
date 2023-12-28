@@ -89,6 +89,32 @@
   - [x] Caso de sucesso
   - [x] Erro
 
+> Salvar cidades do Rio de Janeiro a partir da API do IBGE
+
+**Services**
+
+*Extrair dados*
+
+- [x] Usecase
+- [x] Testes
+  - [x] Caso de sucesso
+  - [x] Erro
+
+*Salvar dados*
+
+- [x] Usecase
+- [x] Testes
+  - [x] Caso de sucesso
+  - [x] Erro
+
+**Controller**
+
+- [x] Usecase
+- [x] Testes
+  - [x] Caso de sucesso
+  - [x] Erro
+
+
 ## Implementações gerais
 
 - [x] Lidar com validações de entrada com filtros globais
@@ -99,7 +125,7 @@
 ## Implementações extras
 
 - [x] Testes unitários
-- [-] Testes e2e
+- [ ] Testes e2e (em andamento)
 - [x] Aplicar filtros ao listar produtos
 - [x] Criar seeder para a tabela de produtos
 - [ ] Cache
