@@ -1,12 +1,12 @@
 import { Body, Controller, Post } from '@nestjs/common';
-
-import { registerSuccess } from '../../../modules/shared/helpers';
-import { ProductDto } from '../dtos';
-import { CreateProductService } from '../services';
 import {
   ApiCreatedResponse,
   ApiInternalServerErrorResponse,
 } from '@nestjs/swagger';
+
+import { registerSuccess } from '../../../modules/shared/helpers';
+import { ProductDto } from '../dtos';
+import { CreateProductService } from '../services';
 
 @Controller('product/register')
 export class CreateProductController {

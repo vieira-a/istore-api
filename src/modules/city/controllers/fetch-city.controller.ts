@@ -3,6 +3,7 @@ import {
   ApiConflictResponse,
   ApiCreatedResponse,
   ApiInternalServerErrorResponse,
+  ApiTags,
 } from '@nestjs/swagger';
 
 import { ConflitContentException } from '../../../modules/shared/exceptions';
@@ -11,6 +12,7 @@ import { CityDto } from '../dtos';
 import { SaveCityService } from '../services';
 
 @Controller('city/fetch')
+@ApiTags('cidades')
 export class FetchCityController {
   constructor(private readonly saveCityService: SaveCityService) {}
 

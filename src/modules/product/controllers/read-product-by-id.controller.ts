@@ -3,13 +3,15 @@ import {
   ApiInternalServerErrorResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
+  ApiTags,
 } from '@nestjs/swagger';
 
 import { DataNotFoundException } from '../../../modules/shared/exceptions';
-import { ReadProductByIdService } from '../services';
 import { ProductDto } from '../dtos';
+import { ReadProductByIdService } from '../services';
 
 @Controller('product')
+@ApiTags('produtos')
 export class ReadProductByIdController {
   constructor(
     private readonly readProductByIdService: ReadProductByIdService,

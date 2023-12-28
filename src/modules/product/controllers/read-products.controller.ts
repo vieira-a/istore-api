@@ -3,6 +3,7 @@ import {
   ApiInternalServerErrorResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
+  ApiTags,
 } from '@nestjs/swagger';
 
 import { PageOptionsDto } from '../../../modules/shared/dtos';
@@ -11,6 +12,7 @@ import { ProductDto, ProductFilterDto } from '../dtos';
 import { ReadProductsService } from '../services';
 
 @Controller('products')
+@ApiTags('produtos')
 export class ReadProductsController {
   constructor(private readonly readProductsService: ReadProductsService) {}
 

@@ -3,6 +3,7 @@ import {
   ApiInternalServerErrorResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
+  ApiTags,
 } from '@nestjs/swagger';
 
 import { updatedSuccess } from '../../../modules/shared/helpers';
@@ -10,6 +11,7 @@ import { UpdateProductDto } from '../dtos';
 import { UpdateProductService } from '../services';
 
 @Controller('product/update')
+@ApiTags('produtos')
 export class UpdateProductController {
   constructor(private readonly updateProductService: UpdateProductService) {}
 

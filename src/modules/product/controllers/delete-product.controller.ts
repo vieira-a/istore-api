@@ -3,12 +3,14 @@ import {
   ApiInternalServerErrorResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
+  ApiTags,
 } from '@nestjs/swagger';
 
 import { deletedSuccess } from '../../../modules/shared/helpers';
 import { DeleteProductService } from '../services';
 
 @Controller('product')
+@ApiTags('produtos')
 export class DeleteProductController {
   constructor(private readonly deleteProductService: DeleteProductService) {}
 
