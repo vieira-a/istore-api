@@ -101,6 +101,7 @@
 - [x] Testes unitários
 - [-] Testes e2e
 - [x] Aplicar filtros ao listar produtos
+- [x] Criar seeder para a tabela de produtos
 - [ ] Cache
 - [ ] Separar cadastro de categorias
 - [ ] Autenticação

@@ -255,11 +255,15 @@ Este comando criará um arquivo com as configurações das migrações que serã
 
 `npm run migration:run`
 
-**8. Inicialize a aplicação**
+**8. Execute o script para popular a tabela de produtos**
+
+`npm run seed:run `
+
+**9. Inicialize a aplicação**
 
 `npm run start:dev`
 
-**9. Acesso**
+**10. Acesso**
 
 - API: http://localhost:3000/api/v1
 - Documentação: http://localhost:3000/api/v1/doc
