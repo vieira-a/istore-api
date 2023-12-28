@@ -1,7 +1,11 @@
-import { DataSource, DataSourceOptions } from 'typeorm';
 import 'dotenv/config';
 
-export const dataSourceOptions: DataSourceOptions = {
+import { DataSource, DataSourceOptions } from 'typeorm';
+import { SeederOptions } from 'typeorm-extension';
+
+import { MainSeeder } from './seeds/main-seeder';
+
+export const dataSourceOptions: DataSourceOptions & SeederOptions = {
   type: 'postgres',
   host: process.env.DB_HOST,
   port: Number(process.env.DB_PORT),
@@ -10,6 +14,7 @@ export const dataSourceOptions: DataSourceOptions = {
   database: process.env.DB_NAME,
   entities: [__dirname + '/../**/*.entity.{js,ts}'],
   migrations: [__dirname + '/migrations/*.{js,ts}'],
+  seeds: [MainSeeder],
 };
 
 const dataSource = new DataSource(dataSourceOptions);
