@@ -2,6 +2,7 @@ import { Body, Controller, Post } from '@nestjs/common';
 import {
   ApiCreatedResponse,
   ApiInternalServerErrorResponse,
+  ApiTags,
 } from '@nestjs/swagger';
 
 import { registerSuccess } from '../../../modules/shared/helpers';
@@ -9,6 +10,7 @@ import { ProductDto } from '../dtos';
 import { CreateProductService } from '../services';
 
 @Controller('product/register')
+@ApiTags('produtos')
 export class CreateProductController {
   constructor(private readonly createProductService: CreateProductService) {}
 
